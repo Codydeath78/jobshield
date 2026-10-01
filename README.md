@@ -4,10 +4,32 @@
 
 **Live app:** https://jobshield-three.vercel.app
 
+
+<p align="center">
+  <img
+    src="docs/screenshots/login.png"
+    alt="JobShield secure login"
+    width="100%"
+  />
+</p>
+
 JobShield is a full-stack SaaS security application that helps users investigate suspicious employment opportunities before they send money, share sensitive information, purchase equipment, or continue with a potentially fraudulent recruiter.
 
 Unlike a single-model classifier, JobShield combines deterministic rules, structured AI analysis, domain intelligence, URL reputation, company verification, community intelligence, file extraction, and browser-based evidence capture. Results are stored in each authenticated user's private workspace and can be reviewed, organized into investigations, shared, and exported as evidence reports.
 
+## Product Preview
+
+<p align="center">
+  <img
+    src="docs/screenshots/dashboard.png"
+    alt="JobShield scam detection dashboard"
+    width="100%"
+  />
+</p>
+
+The dashboard provides one workspace for analyzing recruiter messages,
+emails, job postings, screenshots, job offers, and email files while
+surfacing recent analyses and investigation tools.
 ---
 
 ## Features
@@ -112,6 +134,14 @@ flowchart LR
 **Separate extension authentication.** The browser extension uses a revocable bearer token instead of sharing the user's web-session cookies.
 
 ---
+
+<p align="center">
+  <img
+    src="docs/screenshots/analysis-history.png"
+    alt="JobShield analysis history with search and risk filters"
+    width="100%"
+  />
+</p>
 
 # Analysis Pipeline
 
@@ -271,6 +301,21 @@ Using Vercel deployment-specific preview hostnames and the canonical production 
 
 ---
 
+# Browser Extension
+
+The JobShield Chrome extension allows users to analyze suspicious content
+without copying an entire webpage into the application.
+
+<p align="center">
+  <img
+    src="docs/screenshots/browser-extension.png"
+    alt="JobShield Recruiter Check browser extension"
+    width="420"
+  />
+</p>
+
+---
+
 # Screenshot Privacy
 
 The browser screenshot workflow follows a least-privilege model:
@@ -290,7 +335,41 @@ Browser-capture metadata can include the source website, capture type, selected-
 
 ---
 
+
+
 # Evidence Reports
+
+JobShield turns each analysis into an evidence-driven report containing
+the overall risk assessment, individual findings, source attribution,
+extracted content, and sharing/export controls.
+
+<p align="center">
+  <img
+    src="docs/screenshots/evidence-report-overview.png"
+    alt="JobShield evidence report risk overview"
+    width="100%"
+  />
+</p>
+
+### Explainable Findings
+
+<p align="center">
+  <img
+    src="docs/screenshots/evidence-findings.png"
+    alt="JobShield explainable evidence findings"
+    width="100%"
+  />
+</p>
+
+### Extracted Evidence and Secure Sharing
+
+<p align="center">
+  <img
+    src="docs/screenshots/evidence-sharing.png"
+    alt="JobShield extracted screenshot evidence and report sharing controls"
+    width="100%"
+  />
+</p>
 
 Every completed analysis can produce a detailed evidence report containing the analysis title, score, risk level, summary, findings, signal breakdown, domain intelligence, URL reputation, company-verification data, relevant extraction metadata, browser-capture provenance, and analyzed content.
 
@@ -299,6 +378,14 @@ Reports can be exported to PDF using `pdf-lib`.
 The PDF export is useful for saving evidence, sharing findings, attaching documentation to a fraud report, or preserving an investigation outside the application.
 
 ---
+
+<p align="center">
+  <img
+    src="docs/screenshots/investigations.png"
+    alt="JobShield investigation case management"
+    width="100%"
+  />
+</p>
 
 # Case Management
 
