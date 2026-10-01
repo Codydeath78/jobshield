@@ -13,7 +13,7 @@
   ],
   "host_permissions": [
     "http://localhost:3000/*",
-    "http://jobshield-three.vercel.app/*"
+    "https://jobshield-three.vercel.app/*"
   ],
 
     "optional_host_permissions": [
