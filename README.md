@@ -27,10 +27,8 @@ Unlike a single-model classifier, JobShield combines deterministic rules, struct
   />
 </p>
 
-The dashboard provides one workspace for analyzing recruiter messages,
-emails, job postings, screenshots, job offers, and email files while
-surfacing recent analyses and investigation tools.
----
+- The dashboard provides one workspace for analyzing recruiter messages, emails, job postings, screenshots, job offers, and email files while surfacing recent analyses and investigation tools.
+
 
 ## Features
 
