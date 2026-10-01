@@ -250,13 +250,13 @@ flowchart TD
     REGION --> CROP[Local Canvas Crop]
     CROP --> PANEL
 
-    PANEL -->|Bearer token| TXT[/api/extension/analyze]
-    PANEL -->|Bearer token| IMG[/api/extension/analyze-screenshot]
+    PANEL -->|Bearer token| TXT["/api/extension/analyze"]
+    PANEL -->|Bearer token| IMG["/api/extension/analyze-screenshot"]
 
     TXT --> PIPE[Analysis Pipeline]
     IMG --> PIPE
     PIPE --> DB[(Supabase)]
-    DB --> REPORT[/dashboard/analysis/:id]
+    DB --> REPORT["/dashboard/analysis/:id"]
 ```
 
 The extension token and web login session are intentionally separate. Extension tokens can be revoked without logging the user out of the website.
@@ -506,4 +506,3 @@ A low score, valid domain, company match, or absence of detected warning signs i
 
 Users should independently verify important employment communications before sending money, identity documents, credentials, tax information, or sensitive financial information.
 
----
