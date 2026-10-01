@@ -1,3 +1,6 @@
+const DEFAULT_JOBSHIELD_BASE_URL =
+  "https://jobshield-three.vercel.app";
+
 const connection =
   document.getElementById(
     "connection",
@@ -173,7 +176,7 @@ async function getConfiguration() {
   return {
     baseUrl:
       data.jobshieldBaseUrl ??
-      "http://localhost:3000",
+      DEFAULT_JOBSHIELD_BASE_URL,
 
     token:
       data.jobshieldToken ??
