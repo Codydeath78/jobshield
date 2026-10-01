@@ -18,8 +18,6 @@ export async function proxy(
   if (
   pathname ===
     "/api/extension/analyze" ||
-    pathname ===
-    "/api/extension/analyze-screenshot" ||
   pathname ===
     "/api/auth/confirm-signup" ||
   pathname ===
