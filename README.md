@@ -266,6 +266,18 @@ Dashboard
 
 # Browser Extension
 
+The JobShield Chrome extension allows users to analyze suspicious content
+without copying an entire webpage into the application.
+
+<p align="center">
+  <img
+    src="docs/screenshots/browser-extension.png"
+    alt="JobShield Recruiter Check browser extension"
+    width="420"
+  />
+</p>
+
+
 The Chrome Manifest V3 extension contains a side panel, service worker, context-menu integration, local storage, injected area-selection logic, and bearer-token authentication.
 
 ```mermaid
@@ -298,21 +310,6 @@ https://jobshield-three.vercel.app
 ```
 
 Using Vercel deployment-specific preview hostnames and the canonical production hostname interchangeably can create separate browser-session cookies because they are different origins.
-
----
-
-# Browser Extension
-
-The JobShield Chrome extension allows users to analyze suspicious content
-without copying an entire webpage into the application.
-
-<p align="center">
-  <img
-    src="docs/screenshots/browser-extension.png"
-    alt="JobShield Recruiter Check browser extension"
-    width="420"
-  />
-</p>
 
 ---
 
