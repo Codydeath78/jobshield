@@ -1,0 +1,451 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1"
+    />
+
+    <title>JobShield</title>
+
+    <link
+      rel="stylesheet"
+      href="sidepanel.css"
+    />
+  </head>
+
+  <body>
+    <main class="app-shell">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+
+
+      <!-- =================================================
+           HEADER
+           ================================================= -->
+
+      <header class="app-header">
+        <div class="brand-row">
+          <div class="brand-mark">
+            <span>J</span>
+          </div>
+
+          <div>
+            <p class="eyebrow">
+              JOBSHIELD
+            </p>
+
+            <h1>
+              Recruiter Check
+            </h1>
+          </div>
+        </div>
+
+        <p class="header-description">
+          Analyze suspicious recruiter and job-related
+          messages without scanning the full page.
+        </p>
+      </header>
+
+
+      <!-- =================================================
+           CONNECTION
+           ================================================= -->
+
+      <section
+        id="connection"
+        class="panel connection-panel"
+      >
+        <div class="section-heading">
+          <div class="section-icon">
+            <span>↗</span>
+          </div>
+
+          <div>
+            <h2>
+              Connect JobShield
+            </h2>
+
+            <p>
+              Use the secure token generated from your
+              JobShield dashboard.
+            </p>
+          </div>
+        </div>
+
+
+        <div class="field-group">
+          <label for="base-url">
+            JobShield URL
+          </label>
+
+          <div class="input-shell">
+            <span class="input-icon">
+              ◉
+            </span>
+
+            <input
+              id="base-url"
+              type="url"
+              value="http://localhost:3000"
+              spellcheck="false"
+            />
+          </div>
+        </div>
+
+
+        <div class="field-group">
+          <label for="token">
+            Extension token
+          </label>
+
+          <div class="input-shell">
+            <span class="input-icon">
+              ◇
+            </span>
+
+            <input
+              id="token"
+              type="password"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="Paste your JobShield token"
+            />
+          </div>
+        </div>
+
+
+        <button
+          id="save-connection"
+          class="primary-button"
+          type="button"
+        >
+          <span class="button-icon">
+            ✦
+          </span>
+
+          Save Connection
+        </button>
+
+
+        <p
+          id="connection-error"
+          class="error-message"
+        ></p>
+      </section>
+
+
+      <!-- =================================================
+           ANALYZER
+           ================================================= -->
+
+      <section
+        id="analyzer"
+        class="hidden"
+      >
+        <section class="panel analysis-panel">
+          <div class="section-heading compact">
+            <div>
+              <p class="section-label">
+                SELECTED MESSAGE
+              </p>
+
+              <h2>
+                Analyze content
+              </h2>
+            </div>
+
+            <span class="privacy-pill">
+              Selection only
+            </span>
+          </div>
+
+
+          <textarea
+            id="input"
+            rows="10"
+            maxlength="50000"
+            placeholder="Highlight text on a webpage and choose Analyze selection with JobShield, or paste suspicious content here."
+          ></textarea>
+
+
+          <p
+            id="selection-note"
+            class="helper-text"
+          ></p>
+
+
+          <button
+            id="analyze"
+            class="primary-button analyze-button"
+            type="button"
+          >
+            <span class="button-icon">
+              ✦
+            </span>
+
+            Analyze with JobShield
+          </button>
+        </section>
+
+        <section class="panel capture-panel">
+  <div class="section-heading compact">
+    <div>
+      <p class="section-label">
+        BROWSER SCREENSHOT
+      </p>
+
+      <h2>
+        Select suspicious area
+      </h2>
+    </div>
+
+    <span class="privacy-pill">
+      Region only
+    </span>
+  </div>
+
+
+  <p class="capture-description">
+    Draw a rectangle around the recruiter
+    message, job posting, offer, or other
+    suspicious content you want JobShield
+    to inspect.
+  </p>
+
+
+  <button
+    id="select-area"
+    class="secondary-button capture-button"
+    type="button"
+  >
+    <span>
+      Select Area on Page
+    </span>
+
+    <span>
+      ⛶
+    </span>
+  </button>
+
+
+  <p
+    id="capture-note"
+    class="helper-text"
+  ></p>
+
+
+  <div
+    id="capture-preview"
+    class="capture-preview hidden"
+  >
+    <div class="capture-preview-header">
+      <div>
+        <p class="section-label">
+          SELECTED AREA
+        </p>
+
+        <p
+          id="capture-meta"
+          class="capture-meta"
+        ></p>
+      </div>
+
+      <span class="capture-ready">
+        Ready
+      </span>
+    </div>
+
+
+    <div class="capture-image-shell">
+      <img
+        id="capture-image"
+        alt="Selected JobShield screenshot area"
+      />
+    </div>
+
+
+    <div class="capture-actions">
+      <button
+        id="retake-area"
+        class="secondary-button"
+        type="button"
+      >
+        Retake
+      </button>
+
+      <button
+        id="analyze-area"
+        class="primary-button"
+        type="button"
+        disabled
+      >
+        Analyze Selected Area
+      </button>
+    </div>
+
+
+    <p class="capture-privacy">
+      Only this cropped region will be sent
+      to JobShield for screenshot analysis.
+    </p>
+  </div>
+</section>
+
+
+        <!-- =================================================
+             LOADING
+             ================================================= -->
+
+        <section
+          id="loading"
+          class="panel loading-panel hidden"
+        >
+          <div class="extension-scanner">
+            <div class="scanner-grid"></div>
+
+            <div class="extension-scanner-core">
+              JS
+            </div>
+
+            <div class="extension-scan-line"></div>
+          </div>
+
+
+          <div class="loading-copy">
+            <p class="loading-title">
+              Analyzing evidence
+            </p>
+
+            <p class="helper-text">
+              Checking scam patterns, contextual signals,
+              domains, threat intelligence, and corroborating
+              evidence.
+            </p>
+
+
+            <div class="loading-steps">
+              <div>
+                <span class="status-dot"></span>
+                Pattern analysis
+              </div>
+
+              <div>
+                <span class="status-dot"></span>
+                Intelligence checks
+              </div>
+
+              <div>
+                <span class="status-dot"></span>
+                Risk synthesis
+              </div>
+            </div>
+
+
+            <div class="extension-dots">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- =================================================
+             RESULT
+             ================================================= -->
+
+        <section
+          id="result"
+          class="panel result-panel hidden"
+        >
+          <div class="risk-hero">
+            <div>
+              <p class="section-label">
+                JOBSHIELD ASSESSMENT
+              </p>
+
+              <h2
+                id="risk-level"
+                class="risk-level"
+              ></h2>
+            </div>
+
+
+            <p
+              id="risk-score"
+              class="risk-score"
+            ></p>
+          </div>
+
+
+          <div class="result-section">
+            <p class="section-label">
+              SUMMARY
+            </p>
+
+            <p
+              id="summary"
+              class="result-summary"
+            ></p>
+          </div>
+
+
+          <div class="result-section">
+            <div class="findings-heading">
+              <p class="section-label">
+                TOP FINDINGS
+              </p>
+            </div>
+
+            <div
+              id="findings"
+              class="findings-list"
+            ></div>
+          </div>
+
+
+          <button
+            id="open-report"
+            class="secondary-button report-button"
+            type="button"
+          >
+            <span>
+              Open Full Evidence Report
+            </span>
+
+            <span class="button-arrow">
+              →
+            </span>
+          </button>
+        </section>
+
+
+        <!-- =================================================
+             FOOTER ACTION
+             ================================================= -->
+
+        <div class="extension-footer">
+          <button
+            id="disconnect"
+            class="disconnect-button"
+            type="button"
+          >
+            Disconnect extension
+          </button>
+
+          <p>
+            Your web login session is not shared with the
+            extension.
+          </p>
+        </div>
+      </section>
+    </main>
+
+
+    <script src="sidepanel.js"></script>
+  </body>
+</html>

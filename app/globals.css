@@ -66,3 +66,683 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+
+
+/* =========================================================
+   JOBSHIELD PREMIUM UI
+   ========================================================= */
+
+:root {
+  --js-bg: #06070a;
+  --js-panel: rgba(13, 15, 21, 0.72);
+  --js-panel-strong: rgba(17, 19, 27, 0.92);
+
+  --js-border: rgba(255, 255, 255, 0.09);
+  --js-border-hover: rgba(255, 255, 255, 0.18);
+
+  --js-text-muted: rgba(255, 255, 255, 0.55);
+
+  --js-violet: 124, 92, 255;
+  --js-blue: 67, 139, 255;
+  --js-cyan: 75, 220, 255;
+
+  --js-low: 79, 210, 139;
+  --js-medium: 245, 181, 66;
+  --js-high: 255, 122, 76;
+  --js-critical: 255, 74, 104;
+}
+
+
+/* ---------------------------------------------------------
+   BACKGROUND
+   --------------------------------------------------------- */
+
+body {
+  background:
+    radial-gradient(
+      circle at 20% -10%,
+      rgba(var(--js-violet), 0.13),
+      transparent 36%
+    ),
+    radial-gradient(
+      circle at 92% 12%,
+      rgba(var(--js-blue), 0.1),
+      transparent 32%
+    ),
+    #06070a;
+}
+
+
+::selection {
+  background: rgba(var(--js-violet), 0.4);
+  color: white;
+}
+
+
+/* ---------------------------------------------------------
+   GLASS PANELS
+   --------------------------------------------------------- */
+
+.js-glass {
+  position: relative;
+
+  border:
+    1px solid
+    var(--js-border);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.018)
+    );
+
+  box-shadow:
+    0 18px 60px
+    rgba(0, 0, 0, 0.28);
+
+  backdrop-filter:
+    blur(22px);
+
+  -webkit-backdrop-filter:
+    blur(22px);
+}
+
+
+.js-card {
+  border:
+    1px solid
+    var(--js-border);
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease,
+    box-shadow 180ms ease;
+}
+
+
+.js-card:hover {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    var(--js-border-hover);
+
+  background:
+    rgba(255, 255, 255, 0.04);
+
+  box-shadow:
+    0 18px 45px
+    rgba(0, 0, 0, 0.22);
+}
+
+
+/* ---------------------------------------------------------
+   PRIMARY BUTTON
+   --------------------------------------------------------- */
+
+.js-primary-button {
+  position: relative;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.16);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgb(var(--js-violet)),
+      rgb(var(--js-blue))
+    );
+
+  color: white;
+
+  box-shadow:
+    0 12px 34px
+    rgba(var(--js-violet), 0.22);
+
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    opacity 160ms ease;
+}
+
+
+.js-primary-button:hover:not(:disabled) {
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 16px 42px
+    rgba(var(--js-violet), 0.34);
+}
+
+
+.js-primary-button:active:not(:disabled) {
+  transform:
+    translateY(1px)
+    scale(0.99);
+}
+
+
+.js-primary-button:disabled {
+  cursor:
+    not-allowed;
+
+  opacity:
+    0.48;
+}
+
+
+.js-primary-button::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+
+  width: 35%;
+
+  left: -50%;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.25),
+      transparent
+    );
+
+  transform:
+    skewX(-20deg);
+
+  transition:
+    left 500ms ease;
+}
+
+
+.js-primary-button:hover::before {
+  left: 120%;
+}
+
+
+/* ---------------------------------------------------------
+   SECONDARY BUTTON
+   --------------------------------------------------------- */
+
+.js-secondary-button {
+  border:
+    1px solid
+    var(--js-border);
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+
+.js-secondary-button:hover {
+  border-color:
+    var(--js-border-hover);
+
+  background:
+    rgba(255, 255, 255, 0.06);
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* ---------------------------------------------------------
+   PAGE ENTRANCE
+   --------------------------------------------------------- */
+
+@keyframes js-page-enter {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0);
+  }
+}
+
+
+.js-page-enter {
+  animation:
+    js-page-enter
+    420ms
+    cubic-bezier(
+      0.22,
+      1,
+      0.36,
+      1
+    )
+    both;
+}
+
+
+/* ---------------------------------------------------------
+   AMBIENT ORBS
+   --------------------------------------------------------- */
+
+@keyframes js-orb-float {
+  0%,
+  100% {
+    transform:
+      translate3d(
+        0,
+        0,
+        0
+      )
+      scale(1);
+  }
+
+  50% {
+    transform:
+      translate3d(
+        0,
+        18px,
+        0
+      )
+      scale(1.08);
+  }
+}
+
+
+.js-orb {
+  pointer-events:
+    none;
+
+  position:
+    absolute;
+
+  border-radius:
+    9999px;
+
+  filter:
+    blur(75px);
+
+  animation:
+    js-orb-float
+    8s
+    ease-in-out
+    infinite;
+}
+
+
+/* ---------------------------------------------------------
+   SHIMMER
+   --------------------------------------------------------- */
+
+@keyframes js-shimmer {
+  from {
+    transform:
+      translateX(-100%);
+  }
+
+  to {
+    transform:
+      translateX(100%);
+  }
+}
+
+
+.js-shimmer {
+  position:
+    relative;
+
+  overflow:
+    hidden;
+
+  background:
+    rgba(255, 255, 255, 0.045);
+}
+
+
+.js-shimmer::after {
+  content: "";
+
+  position:
+    absolute;
+
+  inset: 0;
+
+  transform:
+    translateX(-100%);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.07),
+      transparent
+    );
+
+  animation:
+    js-shimmer
+    1.7s
+    ease-in-out
+    infinite;
+}
+
+
+/* ---------------------------------------------------------
+   SCANNER
+   --------------------------------------------------------- */
+
+@keyframes js-scanner-line {
+  0% {
+    transform:
+      translateY(-8px);
+
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 1;
+  }
+
+  88% {
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translateY(96px);
+
+    opacity: 0;
+  }
+}
+
+
+@keyframes js-scanner-pulse {
+  0%,
+  100% {
+    transform:
+      scale(0.96);
+
+    opacity: 0.55;
+  }
+
+  50% {
+    transform:
+      scale(1.04);
+
+    opacity: 1;
+  }
+}
+
+
+.js-scanner {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  width:
+    112px;
+
+  height:
+    112px;
+
+  border:
+    1px solid
+    rgba(var(--js-violet), 0.25);
+
+  border-radius:
+    28px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(var(--js-violet), 0.14),
+      rgba(var(--js-violet), 0.025) 65%
+    );
+
+  box-shadow:
+    inset
+    0 0 35px
+    rgba(var(--js-violet), 0.08);
+
+  overflow:
+    hidden;
+
+  animation:
+    js-scanner-pulse
+    2.1s
+    ease-in-out
+    infinite;
+}
+
+
+.js-scanner::after {
+  content: "";
+
+  position:
+    absolute;
+
+  left: 8px;
+  right: 8px;
+  top: 5px;
+
+  height:
+    2px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--js-cyan), 0.9),
+      transparent
+    );
+
+  box-shadow:
+    0 0 14px
+    rgba(var(--js-cyan), 0.8);
+
+  animation:
+    js-scanner-line
+    1.6s
+    ease-in-out
+    infinite;
+}
+
+
+/* ---------------------------------------------------------
+   ORBIT LOADER
+   --------------------------------------------------------- */
+
+@keyframes js-orbit {
+  to {
+    transform:
+      rotate(360deg);
+  }
+}
+
+
+.js-orbit {
+  position:
+    absolute;
+
+  inset:
+    -7px;
+
+  border-radius:
+    9999px;
+
+  border:
+    1px solid
+    transparent;
+
+  border-top-color:
+    rgba(var(--js-violet), 0.85);
+
+  border-right-color:
+    rgba(var(--js-blue), 0.35);
+
+  animation:
+    js-orbit
+    1.25s
+    linear
+    infinite;
+}
+
+
+/* ---------------------------------------------------------
+   LOADING DOT
+   --------------------------------------------------------- */
+
+@keyframes js-dot {
+  0%,
+  60%,
+  100% {
+    transform:
+      translateY(0);
+
+    opacity:
+      0.35;
+  }
+
+  30% {
+    transform:
+      translateY(-5px);
+
+    opacity:
+      1;
+  }
+}
+
+
+.js-loading-dot {
+  display:
+    inline-block;
+
+  width:
+    5px;
+
+  height:
+    5px;
+
+  margin:
+    0 3px;
+
+  border-radius:
+    9999px;
+
+  background:
+    currentColor;
+
+  animation:
+    js-dot
+    1.1s
+    ease-in-out
+    infinite;
+}
+
+
+.js-loading-dot:nth-child(2) {
+  animation-delay:
+    120ms;
+}
+
+
+.js-loading-dot:nth-child(3) {
+  animation-delay:
+    240ms;
+}
+
+
+/* ---------------------------------------------------------
+   RISK GLOW
+   --------------------------------------------------------- */
+
+.js-risk-low {
+  --risk-color:
+    var(--js-low);
+}
+
+
+.js-risk-medium {
+  --risk-color:
+    var(--js-medium);
+}
+
+
+.js-risk-high {
+  --risk-color:
+    var(--js-high);
+}
+
+
+.js-risk-critical {
+  --risk-color:
+    var(--js-critical);
+}
+
+
+.js-risk-glow {
+  border:
+    1px solid
+    rgba(var(--risk-color), 0.24);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(var(--risk-color), 0.1),
+      rgba(255, 255, 255, 0.02)
+    );
+
+  box-shadow:
+    0 18px 55px
+    rgba(var(--risk-color), 0.08);
+}
+
+
+/* ---------------------------------------------------------
+   REDUCED MOTION
+   --------------------------------------------------------- */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior:
+      auto !important;
+
+    animation-duration:
+      0.01ms !important;
+
+    animation-iteration-count:
+      1 !important;
+
+    transition-duration:
+      0.01ms !important;
+  }
+}

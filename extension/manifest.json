@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "JobShield",
+  "version": "1.0.0",
+  "description": "Analyze suspicious recruiter and job-related messages with JobShield.",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "activeTab",
+    "contextMenus",
+    "scripting",
+    "storage",
+    "sidePanel"
+  ],
+  "host_permissions": [
+    "http://localhost:3000/*"
+  ],
+
+    "optional_host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "action": {
+    "default_title": "Open JobShield"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  }
+}

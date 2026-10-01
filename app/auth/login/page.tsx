@@ -1,11 +1,55 @@
-import { LoginForm } from "@/components/login-form";
+export const instant =
+  false;
 
-export default function Page() {
+import {
+  redirect,
+} from "next/navigation";
+
+import {
+  LoginForm,
+} from "@/components/login-form";
+
+import {
+  createClient,
+} from "@/lib/supabase/server";
+
+
+export default async function LoginPage() {
+  const supabase =
+    await createClient();
+
+
+  const {
+    data:
+      claimsData,
+
+    error:
+      claimsError,
+  } =
+    await supabase
+      .auth
+      .getClaims();
+
+
+  const userId =
+    claimsData
+      ?.claims
+      ?.sub;
+
+
+  if (
+    !claimsError &&
+    userId
+  ) {
+    redirect(
+      "/dashboard",
+    );
+  }
+
+
   return (
-    <div className="flex min-h-svh w-full items-center justify-center p-6 md:p-10">
-      <div className="w-full max-w-sm">
-        <LoginForm />
-      </div>
+    <div className="w-full">
+      <LoginForm />
     </div>
   );
 }
